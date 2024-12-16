@@ -16,6 +16,8 @@ phases:
       - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
       - npm i -g pnpm
       - npm install
+      - npx playwright install
+      - npm run test-start
   post_build:
     commands:
       - ls -l
