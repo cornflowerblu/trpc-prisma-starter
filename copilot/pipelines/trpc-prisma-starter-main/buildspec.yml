@@ -11,7 +11,7 @@ phases:
       - chmod +x ./copilot-linux
   build:
     commands:
-      - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres
+      - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
       - rm -f .env && touch .env
       - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
       - npm i -g pnpm
