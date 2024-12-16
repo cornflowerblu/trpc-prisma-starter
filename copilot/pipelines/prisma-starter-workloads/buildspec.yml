@@ -69,16 +69,6 @@ phases:
           done;
         done;
       - ls -lah ./infrastructure
-      - stages=$(echo $pipeline | jq -r '.stages[].name')
-      # Generate the cloudformation templates.
-      - >
-        for env in $stages; do
-          ./copilot-linux env package -n $env --output-dir './infrastructure' --upload-assets --force;
-          if [ $? -ne 0 ]; then
-            echo "Cloudformation stack and config files were not generated. Please check build logs to see if there was a manifest validation error." 1>&2;
-            exit 1;
-          fi
-        done;
 artifacts:
   files:
     - 'infrastructure/*'
