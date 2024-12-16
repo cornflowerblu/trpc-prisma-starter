@@ -19,6 +19,7 @@ jobs:
           rm -f .env && touch .env
           echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
           cat .env
+            npm i -g pnpm prisma
       - name: Install dependencies
         run: npm ci
       - name: Build
