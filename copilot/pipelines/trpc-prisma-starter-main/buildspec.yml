@@ -11,13 +11,15 @@ phases:
       - chmod +x ./copilot-linux
   build:
     commands:
+      - sudo apt install -y libicu-dev libwoff1 libopus0 libwebp6 libharfbuzz-dev \
+        libenchant-2-2 libgudev-1.0-0 libsecret-1-0 libhyphen0 libjpeg-dev \
+        libegl1 libffi-dev libevdev2 libgles2-mesa-dev
       - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
       - rm -f .env && touch .env
       - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
       - npm i -g pnpm prisma
       - npm install
       - npx playwright install
-      - npx playwright install-deps
       - npm run test-start
   post_build:
     commands:
