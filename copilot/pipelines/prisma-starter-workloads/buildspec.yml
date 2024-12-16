@@ -10,6 +10,7 @@ phases:
       - chmod +x ./copilot-linux
   build:
     commands:
+      - echo 'running unit tests...'
       - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
       - rm -f .env && touch .env
       - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
