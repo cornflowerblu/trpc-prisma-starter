@@ -24,16 +24,9 @@ source:
 stages:
   - # The name of the environment.
     name: test
-    # Optional: flag for manual approval action before deployment.
-    # requires_approval: true
-    # Optional: use test commands to validate this stage of your build.
-    test_commands:
-      - npm i -g pnpm
-      - npm install
-      - Docker run -d -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=postgres postgres
-      - npm run build
-      - npx playwright install
-      - npm run test-start
+    pre_deployments:
+      run_tests:
+        buildspec: ./buildspec-test.yml
 
   - # The name of the environment.
     name: prod
