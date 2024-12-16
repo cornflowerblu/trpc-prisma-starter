@@ -18,7 +18,6 @@ phases:
       - npm i -g pnpm prisma
       - npm install
       - npx playwright install
-      - npx playwright install-deps chromium
       - npm run test-start
   post_build:
     commands:
