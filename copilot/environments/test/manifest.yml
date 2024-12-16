@@ -12,12 +12,15 @@ type: Environment
 #     id:
 
 # Configure the load balancers in your environment, once created.
-# http:
-#   public:
-#     certificates:
-#       [
-#         'arn:aws:acm:us-west-1:663840385700:certificate/64fb9e1b-ca9a-4e20-a1dd-0970065f730c',
-#       ]
+cdn:
+  certificate: 'arn:aws:acm:us-east-1:663840385700:certificate/7db158b9-4619-466e-a1e4-685ce79d4965'
+  terminate_tls: true
+
+http:
+  public:
+    ingress:
+      cdn: true
+
 #   private:
 
 # Configure observability for your environment resources.

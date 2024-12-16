@@ -36,9 +36,9 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/entrypoint.sh /app/entrypoint.sh
 # COPY --from=builder /app/package*.json /app/
 
-EXPOSE 3000
+EXPOSE 80
 
-ENV PORT=3000
+ENV PORT=80
 ENV HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output

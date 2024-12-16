@@ -12,8 +12,19 @@ http:
   # To match all requests you can use the "/" path.
   path: '/'
   # You can specify a custom health check path. The default is "/".
-  # healthcheck: '/'
-  # alias: 'blog.shiftpixy.io'
+  alias: blog.shiftpixy.io
+  hosted_zone: Z05920221K67EAN2JGOU
+  healthcheck:
+    path: '/'
+    port: 80
+    success_codes: '200'
+    healthy_threshold: 3
+    unhealthy_threshold: 2
+    interval: 15s
+    timeout: 10s
+    grace_period: 1m
+  deregistration_delay: 10s
+  stickiness: true
 
 # Configuration for your containers and service.
 image:
@@ -40,13 +51,15 @@ network:
 #
 variables: # Pass environment variables as key value pairs.
   LOG_LEVEL: info
+  PORT: 80
+  HOSTNAME: '0.0.0.0'
 
 secrets:
   DATABASE_URL:
     from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-fullstacknextclusterAuroraSecret
 # You can override any of the values defined above by environment.
-#environments:
-#  test:
-#    count: 2               # Number of tasks to run for the "test" environment.
-#    deployment:            # The deployment strategy for the "test" environment.
+# environments:
+#   test:
+#     deployment: # The deployment strategy for the "test" environment.
 #       rolling: 'recreate' # Stops existing tasks before new ones are started for faster deployments.
+
