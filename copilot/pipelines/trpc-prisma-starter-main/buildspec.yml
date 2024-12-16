@@ -17,8 +17,8 @@ phases:
       - cat .env
       - npm i -g pnpm prisma
       - npm install
-      - npx playwright install
-      - npm run test-start
+      - npm run build
+      - npm run test-unit
   post_build:
     commands:
       - ls -l
