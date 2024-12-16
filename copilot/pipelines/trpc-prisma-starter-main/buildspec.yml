@@ -14,9 +14,10 @@ phases:
       - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
       - rm -f .env && touch .env
       - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
-      - npm i -g pnpm
+      - npm i -g pnpm prisma
       - npm install
       - npx playwright install
+      - npx playwright install-deps
       - npm run test-start
   post_build:
     commands:
