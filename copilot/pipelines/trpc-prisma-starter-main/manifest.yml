@@ -26,8 +26,8 @@ stages:
     name: test
     deployments:
       deploy-env:
-        template_path: infrastructure/fullstack-next-test.stack.yml
-        template_config: infrastructure/fullstack-next-test.params.json
+        template_path: infrastructure/test.env.yml
+        template_config: infrastructure/test.env.params.json
         stack_name: blog-test
     # Optional: flag for manual approval action before deployment.
     # requires_approval: true

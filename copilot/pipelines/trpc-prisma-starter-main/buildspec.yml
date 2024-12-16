@@ -17,7 +17,7 @@ phases:
       - cat .env
       - npm i -g pnpm prisma
       - npm install
-      - npm run build
+      - npm run prebuild
       - npm run test-unit
   post_build:
     commands:
