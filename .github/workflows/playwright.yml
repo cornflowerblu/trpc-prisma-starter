@@ -14,13 +14,19 @@ jobs:
         with:
           node-version: lts/*
       - name: pre-install
-        run: npm i -g pnpm
+        run: |
+          docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+          rm -f .env && touch .env
+          echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
+          cat .env
       - name: Install dependencies
         run: npm ci
+      - name: Build
+        run: npm run build
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npm run test-e2e
+        run: npm run test-start
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
