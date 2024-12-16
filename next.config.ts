@@ -21,4 +21,5 @@ export default {
   typescript: {
     ignoreBuildErrors: true,
   },
+  output: 'standalone',
 } satisfies NextConfig;

@@ -29,16 +29,17 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 COPY --from=builder /app/.next /app/.next
-COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/prisma /app/prisma
 COPY --from=builder /app/public /app/public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/entrypoint.sh /app/entrypoint.sh
-COPY --from=builder /app/package*.json /app/
+# COPY --from=builder /app/package*.json /app/
 
-EXPOSE 80
+EXPOSE 3000
 
-ENV PORT=80
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
