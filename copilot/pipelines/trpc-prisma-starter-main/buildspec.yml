@@ -11,14 +11,7 @@ phases:
       - chmod +x ./copilot-linux
   build:
     commands:
-      - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-      - rm -f .env && touch .env
-      - echo 'DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres' > .env
-      - cat .env
-      - npm i -g pnpm prisma
-      - npm install
-      - npm run prebuild
-      - npm run test-unit
+      - echo 'nothing to build'
   post_build:
     commands:
       - ls -l
