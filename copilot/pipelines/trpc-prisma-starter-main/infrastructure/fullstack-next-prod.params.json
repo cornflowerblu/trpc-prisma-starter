@@ -1,0 +1,26 @@
+{
+  "Parameters": {
+    "AddonsTemplateURL": "",
+    "AppName": "blog",
+    "ArtifactKeyARN": "arn:aws:kms:us-west-1:663840385700:key/916a5f81-8de3-443d-93a4-690fe84b30ac",
+    "ContainerImage": "663840385700.dkr.ecr.us-west-1.amazonaws.com/blog/fullstack-next:4105dc2b-892f-4998-8628-0219e7b641e9-prod",
+    "ContainerPort": "80",
+    "DNSDelegated": "false",
+    "EnvFileARN": "",
+    "EnvName": "prod",
+    "HTTPSEnabled": "false",
+    "LogRetention": "30",
+    "RulePath": "/",
+    "TargetContainer": "fullstack-next",
+    "TargetPort": "80",
+    "TaskCPU": "2048",
+    "TaskCount": "2",
+    "TaskMemory": "4096",
+    "WorkloadName": "fullstack-next"
+  },
+  "Tags": {
+    "copilot-application": "blog",
+    "copilot-environment": "prod",
+    "copilot-service": "fullstack-next"
+  }
+}
